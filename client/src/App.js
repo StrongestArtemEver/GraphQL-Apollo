@@ -1,8 +1,23 @@
+import { useQuery } from "@apollo/client";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GET_ALL_USERS } from "./query/user";
 
 function App() {
+  const {data, loading, error} = useQuery(GET_ALL_USERS)
   const [users, setUsers] = useState([]);
+  console.log(data)
+
+
+  useEffect(() => {
+    if(!loading){
+      setUsers(data.getAllUsers)
+    }
+  },[data])
+
+  if(loading) {
+    return <h1>Loading ...</h1>
+  }
 
   return (
     <div className="App">
