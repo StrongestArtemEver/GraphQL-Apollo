@@ -1,0 +1,1 @@
+Simple project on client/server arch with GraphQL,Apollo
