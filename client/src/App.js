@@ -5,8 +5,8 @@ import { GET_ALL_USERS, GET_ONE_USER } from "./query/user";
 import { CREATE_USER } from "./mutations/user";
 
 function App() {
-  const { data, loading, error, refetch } = useQuery(GET_ALL_USERS);
-  const { data: oneUser, loading: loadingOne, error: errorOne, refetch: oneRefetch } = useQuery(GET_ONE_USER, {
+  const { data, loading,  refetch } = useQuery(GET_ALL_USERS);
+  const { data: oneUser, } = useQuery(GET_ONE_USER, {
     variables: {
       id: 1
     }
@@ -24,6 +24,7 @@ function App() {
     if (!loading) {
       setUsers(data.getAllUsers);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const addUser = (e) => {
